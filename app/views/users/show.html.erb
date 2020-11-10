@@ -1,0 +1,63 @@
+<div class="container">
+ <div class="row">
+  <div class="col-xs-3">
+    <% if flash[:notice] %>
+     <p class="notice"><%= notice %></p>
+    <% end %>
+		<h2>User info</h2>
+		<% user = current_user if user.nil? %>
+      <table class="table">
+	    	<tr><%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "100x100" %></tr>
+
+		      <tr>
+			      <th>name</th>
+		      	<th><%= @user.name %></th>
+		      </tr>
+
+	      	<tr>
+			      <th>introduction</th>
+			      <th><%= @user.introduction %></th>
+		      </tr>
+      </table>
+      <div class="bottan">
+        <%= link_to '',edit_user_path(@user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+      </div>
+      
+    <div class="new book">
+		<h2>New book</h2>
+    <%= form_for(@book_new)  do |f| %>
+      <h4>Title</h4>
+      <%= f.text_field :title %>
+      <h4>Opinion</h4>
+      <%= f.text_area :body %>
+      <%= f.submit 'Create Book' %>
+    <% end %>
+    </div>
+  </div>
+    
+  <div class="col-xs-9">
+    <h2>books</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinio</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+         <% @books.each do |book| %>
+         <tr>
+           <td><%= attachment_image_tag(@user, :profile_image, fallback: "no_image.jpg", size:'50x50') %></td>
+           <td><%= link_to book.title, book_path(book.id) %></td>
+           <td><%= book.body %></td>
+         </tr>
+         <% end %>
+
+      </tbody>
+    </table>
+  </div>
+ </div>
+</div>

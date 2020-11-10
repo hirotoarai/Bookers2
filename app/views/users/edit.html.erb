@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-2">
+		<h1>User info</h1>
+		<%= form_with(model: @user, local: true) do |f| %>
+          <% if @user.errors.any? %>
+           <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
+            <ul>
+             <% @user.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+             <% end %>
+            </ul>
+           </div>
+          <% end %>
+    <% end %>
+		  <%= form_for(@user) do |f| %>
+
+      <div class="field row">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "col-xs-6 name" %>
+      </div>
+
+      <div class="field row">
+        <%= f.label :image %>
+        <%= f.attachment_field :profile_image, class: "col-xs-12 user_image" %>
+      </div>
+
+      <div class="field row">
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction, class: "col-xs-9 introduction" %>
+      </div>
+
+      <div class="actions row">
+        <%= f.submit 'Update User' %>
+      </div>
+
+      <% end %>
+
+	</div>
+</dvi>
