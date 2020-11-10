@@ -44,6 +44,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+    flash[:notice] = "Signed out successfully."
+    redirect_to root_path
+    end
+  end
+  
   def user_params_update
     params.require(:user).permit(:name, :email, :image, :introduction) # introdution追加
   end
