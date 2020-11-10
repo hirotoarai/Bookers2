@@ -9,16 +9,12 @@
   </head>
 
   <body>
+    <header class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-            <h2>Bookers</h2>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          <div id="slidemenu">
-                      </header>
+            <nav class="nav navbar-nav navbar-left">
+              <span style="color: white;">Bookers</span>
+            </nav>
+          <nav>
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
               <% if user_signed_in? %>
                 <li class="">
@@ -48,12 +44,11 @@
                  </li>
               <% end %>
             </ul>
-          </div>
-      　</nav>
-      </div>    
-      <%= yield %>
+          </nav>
       </div>
- 
+    </header>
+      <%= yield %>
+
     <footer>
       <div class="containar">
         <div class="row">

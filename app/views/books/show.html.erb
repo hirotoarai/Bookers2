@@ -1,10 +1,11 @@
 <div class="container">
+<footer>
  <div class="row">
   <div class="col-xs-3">
+      <h2>User info</h2>
     <% if flash[:notice] %>
       <p class="notice"><%= notice %></p>
     <% end %>
-		<h2>User info</h2>
       <table class="table">
 	    	<tr><%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "100x100" %></tr>
 
@@ -45,10 +46,12 @@
 
       <tbody>
          <th>
+           <td>
            <%= link_to(user_path(@user)) do %>
-             <td><%= attachment_image_tag(@user, :profile_image, fallback: "no_image.jpg", size:'50x50') %></td>
+             <%= attachment_image_tag(@user, :profile_image, fallback: "no_image.jpg", size:'50x50') %>
              <div class="user_name"><%= @user.name %></div>
            <% end %>
+           </td>
            <td><%= link_to @book.title, book_path(@book.id) %></td>
            <td><%= @book.body %></td>
          </th>
@@ -60,4 +63,5 @@
     </table>
   </div>
  </div>
+ </footer>
 </div>
